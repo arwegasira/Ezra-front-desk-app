@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="../images/favicon-32x32.png" />
+    <link rel="stylesheet" href="../css/mainStyle.css" />
+    <script
+      src="https://kit.fontawesome.com/9cfdfc4e12.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>The Weekender - Home</title>
+  </head>
+  <body>
+    <main class="home-main">
+      <button class="open-nav-btn">
+        <i class="fa-solid fa-bars nav-toggle open"></i>
+      </button>
+
+      <div class="navigation">
+        <button class="close-nav-btn">
+          <i class="fa-solid fa-xmark nav-toggle close"></i>
+        </button>
+        <nav class="nav">
+          <ul>
+            <li>
+              <a href="#" class="active"
+                ><i class="fa-solid fa-house"></i> <span>Home</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fa-solid fa-hotel"></i> <span>Rooms</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fa-solid fa-users"></i> <span>Clients</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fa-brands fa-servicestack"></i>
+                <span>Services</span></a
+              >
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-gear"></i> <span>Settings</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <button class="log-out-btn">
+          <i class="fa-solid fa-right-from-bracket"></i> log out
+        </button>
+      </div>
+
+      <!-- =========================PAGE CONTENT===================================== -->
+      <div class="page-content">
+        <!-- ======================= SEARCH FROM ==================================== -->
+        <div class="new-client">
+          <button>New Client</button>
+        </div>
+        <div class="form-container">
+          <div class="form-title"><span>Search Form</span></div>
+          <form action="" class="search-form">
+            <div class="search id-pc-search">
+              <label for="id-pc">ID/PC #</label>
+              <input type="text" name="" id="id-pc" class="id-pc" />
+            </div>
+
+            <div class="search phone-search">
+              <label for="phone">Phone Number</label>
+              <input type="text" name="" id="phone" class="phone" />
+            </div>
+
+            <div class="search firstName-search">
+              <label for="firstName">First Name</label>
+              <input type="text" name="" id="firstName" class="firstName" />
+            </div>
+
+            <div class="search lastName-search">
+              <label for="lastName">Last Name</label>
+              <input type="text" name="" id="lastName" class="lastName" />
+            </div>
+
+            <div class="search email-search">
+              <label for="email">Email</label>
+              <input type="email" name="" id="email" class="email" />
+            </div>
+
+            <div class="search arrivalDate-search">
+              <label for="arrivalDate">Arrival Date</label>
+              <input type="date" name="" id="arrivalDate" class="arrivalDate" />
+            </div>
+            <div class="search filter-btn">
+              <input
+                type="submit"
+                name="submit"
+                id="submit"
+                class="submit"
+                value="Apply filters"
+              />
+            </div>
+          </form>
+        </div>
+        <!-- =========================clients list ==================================== -->
+        <div class="client-list-container">
+          <div class="client-info">
+            <div class="client-primary-info">
+              <div class="avatar">
+                <img
+                  src="https://randomuser.me/api/portraits/men/30.jpg"
+                  alt="avatar"
+                />
+                <h4>John Doe</h4>
+              </div>
+              <div class="info-details">
+                <div class="line-detail">
+                  <span class="key">Sex:</span>
+                  <span class="value">M</span>
+                </div>
+                <div class="line-detail">
+                  <span class="key">PC/ID#:</span>
+                  <span class="value">11199726368910</span>
+                </div>
+                <div class="line-detail">
+                  <span class="key">Phone#:</span>
+                  <span class="value">0785298619</span>
+                </div>
+                <button class="expand-collapse">
+                  <i class="fa-solid fa-caret-down"></i>
+                </button>
+              </div>
+            </div>
+            <div class="expanding-grid">
+              <div class="client-secondary-info">
+                <div class="info-details">
+                  <div class="line-detail">
+                    <span class="key">Email:</span>
+                    <span class="value">ac.rwegasira@gmail.com</span>
+                  </div>
+                  <div class="line-detail">
+                    <span class="key">City:</span>
+                    <span class="value">Kigali</span>
+                  </div>
+                  <div class="line-detail">
+                    <span class="key">Country:</span>
+                    <span class="value">Rwanda</span>
+                  </div>
+                  <div class="line-detail">
+                    <span class="key">Nationality:</span>
+                    <span class="value">Rwandese</span>
+                  </div>
+                </div>
+                <div class="info-btns">
+                  <button class="btn-n view-services">view Services</button>
+                  <button class="btn-n add-service">Add Service</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="client-info">
+            <div class="client-primary-info">
+              <div class="avatar">
+                <img
+                  src="https://randomuser.me/api/portraits/men/30.jpg"
+                  alt="avatar"
+                />
+                <h4>John Doe</h4>
+              </div>
+              <div class="info-details">
+                <div class="line-detail">
+                  <span class="key">Sex:</span>
+                  <span class="value">M</span>
+                </div>
+                <div class="line-detail">
+                  <span class="key">PC/ID#:</span>
+                  <span class="value">11199726368910</span>
+                </div>
+                <div class="line-detail">
+                  <span class="key">Phone#:</span>
+                  <span class="value">0785298619</span>
+                </div>
+                <button class="expand-collapse">
+                  <i class="fa-solid fa-caret-down"></i>
+                </button>
+              </div>
+            </div>
+            <div class="expanding-grid">
+              <div class="client-secondary-info">
+                <div class="info-details">
+                  <div class="line-detail">
+                    <span class="key">Email:</span>
+                    <span class="value">ac.rwegasira@gmail.com</span>
+                  </div>
+                  <div class="line-detail">
+                    <span class="key">City:</span>
+                    <span class="value">Kigali</span>
+                  </div>
+                  <div class="line-detail">
+                    <span class="key">Country:</span>
+                    <span class="value">Rwanda</span>
+                  </div>
+                  <div class="line-detail">
+                    <span class="key">Nationality:</span>
+                    <span class="value">Rwandese</span>
+                  </div>
+                </div>
+                <div class="info-btns">
+                  <button class="btn-n view-services">view Services</button>
+                  <button class="btn-n add-service">Add Service</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="client-info">
+            <div class="client-primary-info">
+              <div class="avatar">
+                <img
+                  src="https://randomuser.me/api/portraits/men/30.jpg"
+                  alt="avatar"
+                />
+                <h4>John Doe</h4>
+              </div>
+              <div class="info-details">
+                <div class="line-detail">
+                  <span class="key">Sex:</span>
+                  <span class="value">M</span>
+                </div>
+                <div class="line-detail">
+                  <span class="key">PC/ID#:</span>
+                  <span class="value">11199726368910</span>
+                </div>
+                <div class="line-detail">
+                  <span class="key">Phone#:</span>
+                  <span class="value">0785298619</span>
+                </div>
+                <button class="expand-collapse">
+                  <i class="fa-solid fa-caret-down"></i>
+                </button>
+              </div>
+            </div>
+            <div class="expanding-grid">
+              <div class="client-secondary-info">
+                <div class="info-details">
+                  <div class="line-detail">
+                    <span class="key">Email:</span>
+                    <span class="value">ac.rwegasira@gmail.com</span>
+                  </div>
+                  <div class="line-detail">
+                    <span class="key">City:</span>
+                    <span class="value">Kigali</span>
+                  </div>
+                  <div class="line-detail">
+                    <span class="key">Country:</span>
+                    <span class="value">Rwanda</span>
+                  </div>
+                  <div class="line-detail">
+                    <span class="key">Nationality:</span>
+                    <span class="value">Rwandese</span>
+                  </div>
+                </div>
+                <div class="info-btns">
+                  <button class="btn-n view-services">view Services</button>
+                  <button class="btn-n add-service">Add Service</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-nav-arrow">
+          <button class="backward">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          <small>Page 1 of 10</small>
+          <button class="forward">
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script type="module" src="../js/app.js"></script>
+  </body>
+</html>
