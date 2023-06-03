@@ -38,9 +38,20 @@ if (locationWin.includes('client-registration.html')) {
   //UI variables
   const inputs = document.querySelectorAll('.input')
   const submitBtn = document.querySelector('#submit')
+  alertBoxParent = document.querySelector('.page-content')
+  alertBoxChild = document.querySelector('.form-container')
+  const alertObj = {
+    with: '100%',
+    sucessMsg: 'Client Added Successfully',
+    failMsg: '',
+    sucessClass: 'success',
+    failClass: 'danger',
+    parentDiv: alertBoxParent,
+    childDiv: alertBoxChild,
+  }
 
   submitBtn.addEventListener('click', (e) => {
     e.preventDefault()
-    newClient(inputs)
+    newClient(inputs, alertObj)
   })
 }

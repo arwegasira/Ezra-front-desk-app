@@ -7,7 +7,7 @@
 //give user message
 import { alertdiv, removeElement } from './functions'
 let client = {}
-export const newClient = async (inputs) => {
+export const newClient = async (inputs, alertObj) => {
   inputs.forEach((input) => {
     client[input.name] = input.value
   })
@@ -18,10 +18,28 @@ export const newClient = async (inputs) => {
       url: `${process.env.API_URL_DEV}/client/addclient`,
       data: client,
     })
-    //Build success message
 
+    //Build success message
+    alertdiv(
+      alertObj.width,
+      data.msg,
+      alertObj.sucessClass,
+      alertObj.parentDiv,
+      alertObj.childDiv
+    )
     //clear inputs
   } catch (error) {
-    console.log(error)
+    //Build failure message
+    alertdiv(
+      alertObj.width,
+      error.response.data,
+      alertObj.failClass,
+      alertObj.parentDiv,
+      alertObj.childDiv
+    )
+  }
+  //remove alert div
+  if (document.querySelector('.alert')) {
+    removeElement(document.querySelector('.alert'), 5000)
   }
 }
