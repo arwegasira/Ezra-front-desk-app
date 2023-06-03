@@ -18,7 +18,10 @@ export const newClient = async (inputs, alertObj) => {
       url: `${process.env.API_URL_DEV}/client/addclient`,
       data: client,
     })
-
+    //clear inputs
+    inputs.forEach((input) => {
+      input.value = ''
+    })
     //Build success message
     alertdiv(
       alertObj.width,
@@ -27,7 +30,6 @@ export const newClient = async (inputs, alertObj) => {
       alertObj.parentDiv,
       alertObj.childDiv
     )
-    //clear inputs
   } catch (error) {
     //Build failure message
     alertdiv(
