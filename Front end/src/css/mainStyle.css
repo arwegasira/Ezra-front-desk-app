@@ -174,7 +174,7 @@ body {
   color: var(--blue-saphire);
 }
 
-/* ===================== ALERT DISPLAY =========================================== */
+/* ===================== ALERT DISPLAY + LOADER =========================================== */
 .alert {
   display: flex;
   justify-content: center;
@@ -193,6 +193,46 @@ body {
   color: #842029;
   background-color: #f8d7da;
   border: 1px solid #f5c6cb;
+}
+.dotted-loader-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+.dotted-loader-container span {
+  width: 0.4rem;
+  height: 0.4rem;
+  display: inline-block;
+  border: none;
+  animation: dottedLoader 1.5s linear infinite;
+}
+.dotted-loader-container span:nth-child(1) {
+  animation-delay: 0s;
+}
+.dotted-loader-container span:nth-child(2) {
+  animation-delay: 0.25s;
+}
+.dotted-loader-container span:nth-child(3) {
+  animation-delay: 0.5s;
+}
+.dotted-loader-container span:nth-child(4) {
+  animation-delay: 0.75s;
+}
+.dotted-loader-container span:nth-child(5) {
+  animation-delay: 1s;
+}
+@keyframes dottedLoader {
+  0%,
+  100% {
+    background-color: transparent;
+  }
+  50% {
+    /* transform: scale(1); */
+    background-color: var(--black-licorice);
+  }
 }
 
 /* =========================== Navigation ===================================== */

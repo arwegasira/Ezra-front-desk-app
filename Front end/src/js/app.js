@@ -1,6 +1,7 @@
 import * as dotenv from 'dotenv'
 import { userLogin } from './login.js'
 import { newClient } from './registration'
+import { dottedLoader } from './functions'
 
 dotenv.config()
 // Window location
@@ -38,20 +39,26 @@ if (locationWin.includes('client-registration.html')) {
   //UI variables
   const inputs = document.querySelectorAll('.input')
   const submitBtn = document.querySelector('#submit')
-  alertBoxParent = document.querySelector('.page-content')
-  alertBoxChild = document.querySelector('.form-container')
+  const alertBoxParent = document.querySelector('.page-content')
+  const alertBoxChild = document.querySelector('.form-container')
+  const btnSection = document.querySelector('.reg-btn')
+  const regForm = document.querySelector('.reg-form')
   const alertObj = {
     with: '100%',
-    sucessMsg: 'Client Added Successfully',
-    failMsg: '',
     sucessClass: 'success',
     failClass: 'danger',
     parentDiv: alertBoxParent,
     childDiv: alertBoxChild,
   }
 
+  const loaderObj = {
+    parentDiv: regForm,
+    childDiv: btnSection,
+  }
+  // dottedLoader(regForm, btnSection)
+
   submitBtn.addEventListener('click', (e) => {
     e.preventDefault()
-    newClient(inputs, alertObj)
+    newClient(inputs, alertObj, loaderObj)
   })
 }

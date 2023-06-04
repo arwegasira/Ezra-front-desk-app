@@ -13,4 +13,16 @@ const removeElement = (el, time) => {
     el.remove()
   }, time)
 }
-export { alertdiv, removeElement }
+const dottedLoader = (parent, child) => {
+  const container = document.createElement('div')
+  container.classList.add('dotted-loader-container')
+  container.innerHTML = `
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+   <span></span>
+  `
+  parent.insertBefore(container, child)
+}
+export { alertdiv, removeElement, dottedLoader }

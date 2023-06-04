@@ -5,19 +5,28 @@
 //save client
 //return success or failure
 //give user message
-import { alertdiv, removeElement } from './functions'
+import { alertdiv, removeElement, dottedLoader } from './functions'
 let client = {}
-export const newClient = async (inputs, alertObj) => {
+export const newClient = async (inputs, alertObj, loaderObj) => {
   inputs.forEach((input) => {
     client[input.name] = input.value
   })
 
   try {
+    //add loader
+    dottedLoader(loaderObj.parentDiv, loaderObj.childDiv)
+
     const { data, status, headers } = await axios({
       method: 'POST',
       url: `${process.env.API_URL_DEV}/client/addclient`,
       data: client,
     })
+    //remove loader
+    if (status) {
+      if (document.querySelector('.dotted-loader-container')) {
+        document.querySelector('.dotted-loader-container').remove()
+      }
+    }
     //clear inputs
     inputs.forEach((input) => {
       input.value = ''
@@ -31,6 +40,10 @@ export const newClient = async (inputs, alertObj) => {
       alertObj.childDiv
     )
   } catch (error) {
+    //remove loader
+    if (document.querySelector('.dotted-loader-container')) {
+      document.querySelector('.dotted-loader-container').remove()
+    }
     //Build failure message
     alertdiv(
       alertObj.width,
