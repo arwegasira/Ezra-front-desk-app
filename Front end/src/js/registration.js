@@ -11,7 +11,7 @@ export const newClient = async (inputs, alertObj, loaderObj) => {
   inputs.forEach((input) => {
     client[input.name] = input.value
   })
-
+  console.log(client)
   try {
     //add loader
     dottedLoader(loaderObj.parentDiv, loaderObj.childDiv)
