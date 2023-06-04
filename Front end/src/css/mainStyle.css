@@ -437,8 +437,9 @@ body {
 }
 .home-main .page-content .form-container .search-form .search input:focus {
   outline: none;
-  border: 1px solid var(--yellow-flax);
-  transform: scale(1);
+  /* border: 1px solid var(--yellow-flax);
+  transform: scale(1); */
+  box-shadow: 0 0.18rem 0.33rem rgba(0, 0, 0, 0.13);
 }
 .home-main .page-content .client-list-container {
   display: grid;
@@ -695,6 +696,30 @@ textarea {
   height: 2.7rem;
   margin: 0.5rem 0;
 }
+.reg-main .page-content .form-container form section .fields .reg input:focus,
+.reg-main .page-content .form-container form section .fields .reg select:focus,
+.reg-main
+  .page-content
+  .form-container
+  form
+  section
+  .fields
+  .reg
+  textarea:focus {
+  box-shadow: 0 0.18rem 0.33rem rgba(0, 0, 0, 0.13);
+}
+/* .reg-main .page-content .form-container form section .fields .reg input:valid,
+.reg-main .page-content .form-container form section .fields .reg select:valid,
+.reg-main
+  .page-content
+  .form-container
+  form
+  section
+  .fields
+  .reg
+  textarea:valid {
+  background-color: initial;
+} */
 .reg-main .page-content .form-container form section .fields .reg select {
   -webkit-appearance: none;
   -moz-appearance: none;
