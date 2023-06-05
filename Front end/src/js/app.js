@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv'
 import { userLogin } from './login.js'
-import { newClient } from './registration'
-import { dottedLoader } from './functions'
+import { newClient, backHome } from './registration'
+import { dottedLoader, clientCard } from './functions'
 
 dotenv.config()
 // Window location
@@ -22,8 +22,21 @@ if (locationWin.includes('login.html')) {
 
 // ============================= HOME PAGE====================================
 if (locationWin.includes('home.html')) {
+  if (window.location.search.includes('redirected=true')) {
+    const querString = window.location.search
+    const params = new URLSearchParams(querString)
+    let clients = params.get('clients')
+    clients = decodeURIComponent(clients)
+    clients = JSON.parse(clients)
+    const clientList = document.querySelector('.client-list-container')
+    clientCard(clients, clientList)
+  }
   //UI variables
   const expandClientDiv = document.querySelectorAll('.expand-collapse')
+  const newClientBtn = document.querySelector('.new-client')
+  newClientBtn.addEventListener('click', (e) => {
+    window.location.href = 'client-registration.html'
+  })
 
   expandClientDiv.forEach((el) => {
     el.addEventListener('click', (e) => {
@@ -43,6 +56,8 @@ if (locationWin.includes('client-registration.html')) {
   const alertBoxChild = document.querySelector('.form-container')
   const btnSection = document.querySelector('.reg-btn')
   const regForm = document.querySelector('.reg-form')
+  const backHomebtn = document.querySelector('#back-home')
+
   const alertObj = {
     with: '100%',
     sucessClass: 'success',
@@ -55,10 +70,14 @@ if (locationWin.includes('client-registration.html')) {
     parentDiv: regForm,
     childDiv: btnSection,
   }
-  // dottedLoader(regForm, btnSection)
 
   submitBtn.addEventListener('click', (e) => {
     e.preventDefault()
     newClient(inputs, alertObj, loaderObj)
+  })
+
+  backHomebtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    backHome(alertObj)
   })
 }

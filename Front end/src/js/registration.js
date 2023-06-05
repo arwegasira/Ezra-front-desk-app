@@ -1,10 +1,3 @@
-// make sure all required fields are not empty -- Done
-//get all fields values -- Done
-//clear fields
-//hit the api
-//save client
-//return success or failure
-//give user message
 import { alertdiv, removeElement, dottedLoader } from './functions'
 let client = {}
 export const newClient = async (inputs, alertObj, loaderObj) => {
@@ -56,5 +49,28 @@ export const newClient = async (inputs, alertObj, loaderObj) => {
   //remove alert div
   if (document.querySelector('.alert')) {
     removeElement(document.querySelector('.alert'), 5000)
+  }
+}
+
+export const backHome = async (alertObj) => {
+  try {
+    const { data, headers, status } = await axios({
+      Method: 'GET',
+      url: `${process.env.API_URL_DEV}/client/backhome`,
+    })
+    //go to home page
+    let clients = data.clients
+    clients = encodeURIComponent(JSON.stringify(clients))
+    window.location.href = `home.html?redirected=true&&clients=${clients}`
+  } catch (error) {
+    //build alert message
+    alertdiv(
+      alertObj.width,
+      error.response.data,
+      alertObj.failClass,
+      alertObj.parentDiv,
+      alertObj.childDiv
+    )
+    console.log(error)
   }
 }
