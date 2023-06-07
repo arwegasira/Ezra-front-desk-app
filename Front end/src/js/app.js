@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv'
 import { userLogin } from './login.js'
 import { newClient, backHome } from './registration'
-import { dottedLoader, clientCard } from './functions'
+import { dottedLoader, clientCard, searchClients } from './functions'
 
 dotenv.config()
 // Window location
@@ -31,19 +31,44 @@ if (locationWin.includes('home.html')) {
     const clientList = document.querySelector('.client-list-container')
     clientCard(clients, clientList)
   }
+
+  const searchForm = document.querySelector('.search-form')
+
   //UI variables
-  const expandClientDiv = document.querySelectorAll('.expand-collapse')
+  let expandClientDiv = document.querySelectorAll('.expand-collapse')
   const newClientBtn = document.querySelector('.new-client')
+  const filterInputs = document.querySelectorAll('.filter')
+
+  // new client btn
   newClientBtn.addEventListener('click', (e) => {
     window.location.href = 'client-registration.html'
   })
 
+  // expand client card fx
   expandClientDiv.forEach((el) => {
     el.addEventListener('click', (e) => {
       nextsib = el.parentElement.parentElement.nextElementSibling
       nextsib.classList.toggle('expanded')
       el.classList.toggle('rotate')
     })
+  })
+  // search client functionality
+  searchForm.addEventListener('click', async (e) => {
+    e.preventDefault()
+    if (e.target.id === 'submit-filters') {
+      window.location.href = 'home.html'
+      const clients = await searchClients(filterInputs)
+      const clientList = document.querySelector('.client-list-container')
+      clientCard(clients, clientList)
+      expandClientDiv = document.querySelectorAll('.expand-collapse')
+      expandClientDiv.forEach((el) => {
+        el.addEventListener('click', (e) => {
+          nextsib = el.parentElement.parentElement.nextElementSibling
+          nextsib.classList.toggle('expanded')
+          el.classList.toggle('rotate')
+        })
+      })
+    }
   })
 }
 

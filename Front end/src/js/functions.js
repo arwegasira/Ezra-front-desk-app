@@ -96,4 +96,28 @@ const clientCard = (clients, list) => {
     list.appendChild(clientInfo)
   })
 }
-export { alertdiv, removeElement, dottedLoader, clientCard }
+const searchClients = async (inputs) => {
+  let search = {}
+  inputs.forEach((input) => {
+    search[input.name] = input.value
+  })
+  //API request
+  try {
+    const { data, headers, status } = await axios({
+      method: 'GET',
+      url: `${process.env.API_URL_DEV}/client/clients?idNumber=${search.idNumber}&&firstName=${search.firstName}&&lastName=${search.lastName}&&email=${search.email}&&arrivalDate=${search.arrivalDate}&&phoneNumber=${search.phoneNumber}`,
+      data: search,
+    })
+    //rebuild the user list
+    const clientList = document.querySelector('.client-list-container')
+    clientList.innerHTML = ''
+    // clientCard(data.clients, clientList)
+    return data.clients
+  } catch (error) {
+    //rebuild error div
+    const clientList = document.querySelector('.client-list-container')
+    clientList.innerHTML = ''
+    console.log(error)
+  }
+}
+export { alertdiv, removeElement, dottedLoader, clientCard, searchClients }
