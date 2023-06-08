@@ -31,17 +31,26 @@ if (locationWin.includes('home.html')) {
     const clientList = document.querySelector('.client-list-container')
     clientCard(clients, clientList)
   }
-
-  const searchForm = document.querySelector('.search-form')
-
+  if (window.location.search.includes('clientSearch=true')) {
+    const queryString = window.location.search
+    const params = new URLSearchParams(queryString)
+    clients = params.get('clients')
+    clients = decodeURIComponent(clients)
+    clients = JSON.parse(clients)
+    const clientList = document.querySelector('.client-list-container')
+    clientCard(clients, clientList)
+  }
   //UI variables
+  const searchForm = document.querySelector('.search-form')
   let expandClientDiv = document.querySelectorAll('.expand-collapse')
   const newClientBtn = document.querySelector('.new-client')
   const filterInputs = document.querySelectorAll('.filter')
 
   // new client btn
   newClientBtn.addEventListener('click', (e) => {
-    window.location.href = 'client-registration.html'
+    if (e.target.id === 'new-client') {
+      window.location.href = 'client-registration.html'
+    }
   })
 
   // expand client card fx
@@ -56,18 +65,11 @@ if (locationWin.includes('home.html')) {
   searchForm.addEventListener('click', async (e) => {
     e.preventDefault()
     if (e.target.id === 'submit-filters') {
-      window.location.href = 'home.html'
-      const clients = await searchClients(filterInputs)
       const clientList = document.querySelector('.client-list-container')
-      clientCard(clients, clientList)
-      expandClientDiv = document.querySelectorAll('.expand-collapse')
-      expandClientDiv.forEach((el) => {
-        el.addEventListener('click', (e) => {
-          nextsib = el.parentElement.parentElement.nextElementSibling
-          nextsib.classList.toggle('expanded')
-          el.classList.toggle('rotate')
-        })
-      })
+      clientList.innerHTML = ''
+      let clients = await searchClients(filterInputs)
+      clients = encodeURIComponent(JSON.stringify(clients))
+      window.location.href = `home.html?clientSearch=true&&clients=${clients}`
     }
   })
 }

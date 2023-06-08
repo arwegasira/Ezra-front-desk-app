@@ -117,7 +117,7 @@ const searchClients = async (inputs) => {
     //rebuild error div
     const clientList = document.querySelector('.client-list-container')
     clientList.innerHTML = ''
-    console.log(error)
+    return error
   }
 }
 export { alertdiv, removeElement, dottedLoader, clientCard, searchClients }
