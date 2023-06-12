@@ -101,9 +101,11 @@ if (locationWin.includes('client-registration.html')) {
     childDiv: btnSection,
   }
 
-  submitBtn.addEventListener('click', (e) => {
+  submitBtn.addEventListener('click', async (e) => {
     e.preventDefault()
-    newClient(inputs, alertObj, loaderObj)
+    const formData = new FormData(regForm)
+    const client = Object.fromEntries(formData)
+    await newClient(client, alertObj, loaderObj, regForm)
   })
 
   backHomebtn.addEventListener('click', (e) => {

@@ -1,14 +1,9 @@
 import { alertdiv, removeElement, dottedLoader } from './functions'
-let client = {}
-export const newClient = async (inputs, alertObj, loaderObj) => {
-  inputs.forEach((input) => {
-    client[input.name] = input.value
-  })
-  console.log(client)
+
+export const newClient = async (client, alertObj, loaderObj, formEl) => {
   try {
     //add loader
     dottedLoader(loaderObj.parentDiv, loaderObj.childDiv)
-
     const { data, status, headers } = await axios({
       method: 'POST',
       url: `${process.env.API_URL_DEV}/client/addclient`,
@@ -21,9 +16,7 @@ export const newClient = async (inputs, alertObj, loaderObj) => {
       }
     }
     //clear inputs
-    inputs.forEach((input) => {
-      input.value = ''
-    })
+    formEl.reset()
     //Build success message
     alertdiv(
       alertObj.width,
