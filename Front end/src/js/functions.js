@@ -25,9 +25,7 @@ const dottedLoader = (parent, child) => {
   `
   parent.insertBefore(container, child)
 }
-const spinningLoder = (parent, child, refresh) => {
-
-}
+const spinningLoder = (parent, child, refresh) => {}
 const clientCard = (clients, list) => {
   clients.forEach((client) => {
     const clientInfo = document.createElement('div')
@@ -99,17 +97,13 @@ const clientCard = (clients, list) => {
     list.appendChild(clientInfo)
   })
 }
-const searchClients = async (inputs) => {
-  let search = {}
-  inputs.forEach((input) => {
-    search[input.name] = input.value
-  })
+const searchClients = async (searchData) => {
   //API request
   try {
     const { data, headers, status } = await axios({
       method: 'GET',
-      url: `${process.env.API_URL_DEV}/client/clients?idNumber=${search.idNumber}&&firstName=${search.firstName}&&lastName=${search.lastName}&&email=${search.email}&&arrivalDate=${search.arrivalDate}&&phoneNumber=${search.phoneNumber}`,
-      data: search,
+      url: `${process.env.API_URL_DEV}/client/clients?idNumber=${searchData.idNumber}&&firstName=${searchData.firstName}&&lastName=${searchData.lastName}&&email=${searchData.email}&&arrivalDate=${searchData.arrivalDate}&&phoneNumber=${searchData.phoneNumber}`,
+      data: searchData,
     })
     //rebuild the user list
     const clientList = document.querySelector('.client-list-container')

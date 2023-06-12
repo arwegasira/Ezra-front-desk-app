@@ -65,9 +65,12 @@ if (locationWin.includes('home.html')) {
   searchForm.addEventListener('click', async (e) => {
     e.preventDefault()
     if (e.target.id === 'submit-filters') {
+      // get form data with formData API
+      const formData = new FormData(e.currentTarget)
+      const searchData = Object.fromEntries(formData)
       const clientList = document.querySelector('.client-list-container')
       clientList.innerHTML = ''
-      let clients = await searchClients(filterInputs)
+      let clients = await searchClients(searchData)
       clients = encodeURIComponent(JSON.stringify(clients))
       window.location.href = `home.html?clientSearch=true&&clients=${clients}`
     }
