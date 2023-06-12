@@ -25,6 +25,9 @@ const dottedLoader = (parent, child) => {
   `
   parent.insertBefore(container, child)
 }
+const spinningLoder = (parent, child, refresh) => {
+
+}
 const clientCard = (clients, list) => {
   clients.forEach((client) => {
     const clientInfo = document.createElement('div')
