@@ -23,8 +23,8 @@ if (locationWin.includes('login.html')) {
 // ============================= HOME PAGE====================================
 if (locationWin.includes('home.html')) {
   if (window.location.search.includes('redirected=true')) {
-    const querString = window.location.search
-    const params = new URLSearchParams(querString)
+    const queryString = window.location.search
+    const params = new URLSearchParams(queryString)
     let clients = params.get('clients')
     clients = decodeURIComponent(clients)
     clients = JSON.parse(clients)
