@@ -70,7 +70,7 @@ if (locationWin.includes('home.html')) {
       const searchData = Object.fromEntries(formData)
       const clientList = document.querySelector('.client-list-container')
       clientList.innerHTML = ''
-      let clients = await searchClients(searchData)
+      let clients = await searchClients(searchData, searchForm, clientList)
       clients = encodeURIComponent(JSON.stringify(clients))
       window.location.href = `home.html?clientSearch=true&&clients=${clients}`
     }

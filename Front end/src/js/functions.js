@@ -25,7 +25,17 @@ const dottedLoader = (parent, child) => {
   `
   parent.insertBefore(container, child)
 }
-const spinningLoder = (parent, child, refresh) => {}
+const spinningLoader = (parent, child, width) => {
+  const loader = document.createElement('div')
+  loader.classList.add('spinning-loader')
+  loader.innerHTML = '<div></div>'
+  if (width) loader.style.width = width
+  if (parent && child) {
+    parent.insertBefore(loader, child)
+    return
+  }
+  return loader
+}
 const clientCard = (clients, list) => {
   clients.forEach((client) => {
     const clientInfo = document.createElement('div')
@@ -97,23 +107,23 @@ const clientCard = (clients, list) => {
     list.appendChild(clientInfo)
   })
 }
-const searchClients = async (searchData) => {
+const searchClients = async (searchData, form, clientList) => {
   //API request
   try {
+    //add loading
+    const loader = spinningLoader()
+    clientList.appendChild(loader)
     const { data, headers, status } = await axios({
       method: 'GET',
       url: `${process.env.API_URL_DEV}/client/clients?idNumber=${searchData.idNumber}&&firstName=${searchData.firstName}&&lastName=${searchData.lastName}&&email=${searchData.email}&&arrivalDate=${searchData.arrivalDate}&&phoneNumber=${searchData.phoneNumber}`,
       data: searchData,
     })
-    //rebuild the user list
-    const clientList = document.querySelector('.client-list-container')
-    clientList.innerHTML = ''
-    // clientCard(data.clients, clientList)
     return data.clients
   } catch (error) {
     //rebuild error div
     const clientList = document.querySelector('.client-list-container')
     clientList.innerHTML = ''
+    console.error(error)
     return error
   }
 }
